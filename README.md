@@ -1,8 +1,9 @@
 # TAIP Crack Detection
 
-# [Trello link](https://trello.com/b/3FpD3QBY/taip-crack-detection)
+#### Links
+* [Trello](https://trello.com/b/3FpD3QBY/taip-crack-detection)
 
-Team members:
+#### Team members:
 * Victor Cotofana (victorcotofana1@gmail.com)
 * Vladut Morosanu (vladmorosanu97@gmail.com)
 * Oana Hriscu (oana.hriscu97@gmail.com)
