@@ -2,6 +2,7 @@
 
 #### Links
 * [Trello](https://trello.com/b/3FpD3QBY/taip-crack-detection)
+* [State of the art - Google Docs](https://docs.google.com/document/d/1j-sQe7kjPcNkF--sT_CmAcPh65JCy3ufxmlT2TtHXPc/edit)
 
 #### Team members:
 * Victor Cotofana (victorcotofana1@gmail.com)
