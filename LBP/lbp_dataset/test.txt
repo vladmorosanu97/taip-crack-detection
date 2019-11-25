@@ -1,0 +1,5 @@
+no_crack_1.jpg 0
+no_crack_2.jpg 0
+road_crack_test_1.jpg 1
+road_crack_test_2.jpg 1
+road_crack_test_3.jpg 1

@@ -1,0 +1,12 @@
+no_crack_1.jpg 0
+no_crack_2.jpg 0
+minor_crack_1.jpg 1
+minor_crack_2.jpg 1
+minor_crack_3.jpg 1
+road_crack_1.jpg 2
+road_crack_2.jpg 2
+road_crack_3.jpg 2
+road_crack_4.jpg 2
+road_crack_5.jpg 2
+road_crack_6.jpg 2
+road_crack_7.jpg 2
