@@ -24,6 +24,9 @@ Libraries:
 * numpy 1.17
 * tensorflow 2.0.0
 
+Datasets:   
+* [Concrete Crack Images for Classification](https://data.mendeley.com/datasets/5y9wdsg2zt/2)
+
 ## UNET
 Python 3.6.5
 
@@ -33,8 +36,6 @@ Libraries:
 * keras 2.3.1
 * numpy 1.17.4
     
-Datasets:   
-* [Concrete Crack Images for Classification](https://data.mendeley.com/datasets/5y9wdsg2zt/2)
 
 ## Vanishing Point algorithm
 Python 3.7
