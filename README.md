@@ -23,6 +23,15 @@ Libraries:
 * imagesize 1.1.0
 * numpy 1.17
 * tensorflow 2.0.0
+
+## UNET
+Python 3.6.5
+
+Libraries:
+* cv2 4.1.2
+* tensorflow 2.0.0
+* keras 2.3.1
+* numpy 1.17.4
     
 Datasets:   
 * [Concrete Crack Images for Classification](https://data.mendeley.com/datasets/5y9wdsg2zt/2)
