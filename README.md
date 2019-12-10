@@ -26,3 +26,12 @@ Libraries:
     
 Datasets:   
 * [Concrete Crack Images for Classification](https://data.mendeley.com/datasets/5y9wdsg2zt/2)
+
+## Vanishing Point algorithm
+Python 3.7
+
+Libraries:
+* numpy 1.17
+* imutils 0.5.3
+* cv2 1.0.0
+* Flask 1.1.1
