@@ -35,3 +35,15 @@ Libraries:
 * imutils 0.5.3
 * cv2 1.0.0
 * Flask 1.1.1
+
+## LBP
+Python 3.6
+
+Libraries:
+* cv2
+* skimage
+* scipy
+* matplotlib
+* numpy
+* sklearn
+* cvutils
