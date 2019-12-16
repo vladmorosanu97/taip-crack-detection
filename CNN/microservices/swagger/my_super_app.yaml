@@ -1,0 +1,41 @@
+swagger: "2.0"
+
+info:
+  version: 1.0.0
+  title: Indexer Service
+  license:
+    name: MIT
+
+basePath: /1.0
+
+schemes:
+  - http
+consumes:
+  - application/json
+produces:
+  - application/json
+
+paths:
+  /room/:
+    post:
+      operationId: api.items.post
+      parameters:
+        - in: body
+          name: room
+          required: true
+          schema:
+            $ref: '#/definitions/Room'
+      responses:
+        '201':
+          description: 'Room indexed'
+          schema:
+            $ref: '#/definitions/Room'
+
+definitions:
+  Room:
+    type: object
+    required:
+      - name
+    properties:
+      name:
+        type: string

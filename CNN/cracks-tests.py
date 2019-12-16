@@ -14,12 +14,13 @@ from PIL import Image
 
 import numpy as np
 from tensorflow.keras.preprocessing import image
-
-test_image = image.load_img(r"C:\Master\TAIP\test-datasets\cracks\random-images\Screenshot_22.png", target_size = (64,64))
+import tensorflow as tf
+print(tf.version.VERSION)
+test_image = image.load_img(r"C:\Master\TAIP\rotate-images\horizontal-dataset\horizontal-00001-135.jpg", target_size = (128,128), color_mode = "grayscale")
 test_image = image.img_to_array(test_image)
 test_image = np.expand_dims(test_image, axis = 0)
 
-classifier = load_model(r"C:\Master\TAIP\test-datasets\cracks\models\models.h5")
+classifier = load_model(r"C:\Master\TAIP\models\model2.h5")
 result = classifier.predict(test_image)
 
 print(result[0][0])
