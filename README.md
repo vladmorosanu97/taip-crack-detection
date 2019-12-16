@@ -14,3 +14,46 @@
 * Oana Hriscu       (oana.hriscu97@gmail.com)
 * Andra Chiorcea    (achiorcea27@gmail.com)
 * Teodora Grosu     (teogrosu29@gmail.com)
+
+## CNN
+Python 3.6.9
+
+Libraries:  
+* keras 2.2.4
+* imagesize 1.1.0
+* numpy 1.17
+* tensorflow 2.0.0
+
+Datasets:   
+* [Concrete Crack Images for Classification](https://data.mendeley.com/datasets/5y9wdsg2zt/2)
+
+## UNET
+Python 3.6.5
+
+Libraries:
+* cv2 4.1.2
+* tensorflow 2.0.0
+* keras 2.3.1
+* numpy 1.17.4
+    
+
+## Vanishing Point algorithm
+Python 3.7
+
+Libraries:
+* numpy 1.17
+* imutils 0.5.3
+* cv2 1.0.0
+* Flask 1.1.1
+
+## LBP
+Python 3.6
+
+Libraries:
+* cv2
+* skimage
+* scipy
+* matplotlib
+* numpy
+* sklearn
+* cvutils
