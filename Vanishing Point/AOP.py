@@ -22,5 +22,5 @@ class Aspects:
     @aspectlib.Aspect
     def result_logger(*args):
         result = yield aspectlib.Proceed
-        print(u"[LOGGER] The returned result is: {}".format(result, ))
+        print(u"[LOGGER] The returned result is: {}".format(result))
         yield aspectlib.Return(result)

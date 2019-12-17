@@ -1,29 +1,33 @@
 from unittest import TestCase
 
-from Kalman_Filter import matrix
+from Kalman_Filter import Matrix
 
 
 class TestMatrix(TestCase):
 
     def setUp(self):
-        self.matrix = matrix([[10000., 0.], [0., 10000.]])
+        self.matrix = Matrix([[10000., 0.], [0., 10000.]])
 
     def test_zero(self):
         self.zero = self.matrix.zero(5, 10)
-        self.assertEqual(self.zero, -2)
+        self.assertIsNone(self.zero)
 
     def test_identity(self):
         self.identity = self.matrix.identity(500)
-        self.assertEqual(self.identity, -10)
+        self.assertIsNone(self.identity)
 
-    # def test_show(self):
-    #     self.fail()
-    #
-    # def test_transpose(self):
-    #     self.fail()
-    #
-    # def test_Cholesky(self):
-    #     self.fail()
+    def test_show(self):
+        self.show = self.matrix.show()
+        self.assertIsNone(self.show)
+
+    def test_transpose(self):
+        self.transpose = self.matrix.transpose()
+        self.assertIsNot(self.transpose, [10000.0, 0.0])
+        self.assertIsNot(self.transpose, [0.0, 10000.0])
+
+    def test_Cholesky(self):
+        self.cholesky = self.matrix.Cholesky()
+        self.assertIsNot(self.cholesky, [[100.0, 0.0], [0, 100.0]])
     #
     # def test_CholeskyInverse(self):
     #     self.fail()

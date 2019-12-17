@@ -2,13 +2,9 @@
 
 import numpy as np
 
-from AOP import Aspects
 
+class Matrix:
 
-class matrix:
-    
-    # Implements basic operations of a matrix class
-    
     def __init__(self, value):
         self.value = value
         self.dimx = len(value)
@@ -16,7 +12,7 @@ class matrix:
         if value == [[]]:
             self.dimx = 0
 
-    #@Aspects.param_validator
+    # @Aspects.param_validator
     def zero(self, dimx, dimy):
         # check if valid dimensions
         if dimx < 1 or dimy < 1:
@@ -26,7 +22,7 @@ class matrix:
             self.dimy = dimy
             self.value = [[0 for row in range(dimy)] for col in range(dimx)]
 
-    #@Aspects.param_validator
+    # @Aspects.param_validator
     def identity(self, dim):
         # check if valid dimension
         if dim < 1:
@@ -49,7 +45,7 @@ class matrix:
             raise (ValueError, "Matrices must be of equal dimensions to add")
         else:
             # add if correct dimensions
-            res = matrix([[]])
+            res = Matrix([[]])
             res.zero(self.dimx, self.dimy)
             for i in range(self.dimx):
                 for j in range(self.dimy):
@@ -62,7 +58,7 @@ class matrix:
             raise (ValueError, "Matrices must be of equal dimensions to subtract")
         else:
             # subtract if correct dimensions
-            res = matrix([[]])
+            res = Matrix([[]])
             res.zero(self.dimx, self.dimy)
             for i in range(self.dimx):
                 for j in range(self.dimy):
@@ -75,7 +71,7 @@ class matrix:
             raise (ValueError, "Matrices must be m*n and n*p to multiply")
         else:
             # multiply if correct dimensions
-            res = matrix([[]])
+            res = Matrix([[]])
             res.zero(self.dimx, other.dimy)
             for i in range(self.dimx):
                 for j in range(other.dimy):
@@ -85,7 +81,7 @@ class matrix:
     
     def transpose(self):
         # compute transpose
-        res = matrix([[]])
+        res = Matrix([[]])
         res.zero(self.dimy, self.dimx)
         for i in range(self.dimx):
             for j in range(self.dimy):
@@ -94,11 +90,11 @@ class matrix:
     
     # Thanks to Ernesto P. Adorio for use of Cholesky and CholeskyInverse functions
 
-    #@Aspects.param_validator
+    # @Aspects.param_validator
     def Cholesky(self, ztol=1.0e-5):
         # Computes the upper triangular Cholesky factorization of
         # a positive definite matrix.
-        res = matrix([[]])
+        res = Matrix([[]])
         res.zero(self.dimx, self.dimx)
         
         for i in range(self.dimx):
@@ -120,7 +116,7 @@ class matrix:
     def CholeskyInverse(self):
         # Computes inverse of matrix given its Cholesky upper Triangular
         # decomposition of matrix.
-        res = matrix([[]])
+        res = Matrix([[]])
         res.zero(self.dimx, self.dimx)
         
         # Backward step for inverse.
@@ -142,50 +138,52 @@ class matrix:
 
 
 # ------------ Extended Kalman filter function -------------------------------------#
-#@Aspects.param_validator
+# @Aspects.param_validator
 def EKF(x, P, lines, measurements, resolution, count=0):
     count = 0
-    I = matrix([[1., 0.], [0., 1.]]) # identity matrix
+    I = Matrix([[1., 0.], [0., 1.]])  # identity matrix
     #for x1,y1,m1,c1,d1,l1 in lines:
     for x1, y1 in lines:
-        theta = np.arctan2(measurements.value[1][0] - y1, measurements.value[0][0] - x1)  # angle b/w measured vp and detected lines
-        h_theta = np.arctan2((x.value[1][0] - y1), (x.value[0][0] - x1))  # angle between current state and detected lines
+        # angle b/w measured vp and detected lines
+        theta = np.arctan2(measurements.value[1][0] - y1, measurements.value[0][0] - x1)
+        # angle between current state and detected lines
+        h_theta = np.arctan2((x.value[1][0] - y1), (x.value[0][0] - x1))
         y = theta - h_theta  # difference b/w measured and state angle
         d_square = np.square(x.value[0][0] - x1) + np.square(x.value[1][0] - y1)
-        H = matrix([[-(x.value[1][0] - y1)/d_square, (x.value[0][0] - x1)/d_square]])
+        H = Matrix([[-(x.value[1][0] - y1) / d_square, (x.value[0][0] - x1) / d_square]])
         omega = abs(measurements.value[0][0] - x.value[0][0])
         if omega > 3:
             factor = (omega/3.0 * np.pi) % (np.pi - 0.01)
-            R = matrix([[factor**2 + 0.01]])
+            R = Matrix([[factor ** 2 + 0.01]])
         else:
-            R = matrix([[0.01]])
+            R = Matrix([[0.01]])
         if count < 5:
             if abs(y) < 1:   # diff is < 1 radian (57 degrees)
                 count += 1
                 S = H*P*H.transpose() + R
                 K = P*H.transpose()*S.inverse()
-                y = matrix([[y]])
+                y = Matrix([[y]])
                 x = x + K*y
                 P = (I - K*H)*P
             else:
-                #P = matrix([[1250., 0.], [0., 1250.]])
-                P = matrix([[16000., 0.], [0., 16000.]])
+                # P = matrix([[1250., 0.], [0., 1250.]])
+                P = Matrix([[16000., 0.], [0., 16000.]])
         else:
             if abs(y) < .2:
                 count += 1
                 S = H*P*H.transpose() + R
-                #print 'S = {0}'.format(S)
+                # print 'S = {0}'.format(S)
                 K = P*H.transpose()*S.inverse()
-                #y = (np.pi/180 * y)
-                y = matrix([[y]])
+                # y = (np.pi/180 * y)
+                y = Matrix([[y]])
                 x = x + K*y
                 P = (I - K*H)*P
             else:
-                #P = matrix([[1250., 0.], [0., 1250.]])
-                P = matrix([[10000., 0.], [0., 10000.]])
+                # P = matrix([[1250., 0.], [0., 1250.]])
+                P = Matrix([[10000., 0.], [0., 10000.]])
     return x, P
 
 
-#res = matrix([[10000., 0.], [0., 10000.]])
-#print(res.identity(50))
+# res = matrix([[10000., 0.], [0., 10000.]])
+# print(res.identity(50))
 

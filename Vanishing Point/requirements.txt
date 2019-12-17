@@ -1,0 +1,7 @@
+imutils
+numpy
+cv2
+Flask
+connexion
+Flask-Injector
+fastavro
