@@ -22,8 +22,6 @@ dn_DATA = "dataset"
 # >> data level
 dn_TEST = "test"
 dn_TRAIN = "train"
-# >>> only train level
-dn_AUGMENTATION = "aug"
 # >>> test and train level
 dn_IMAGE = "image"
 dn_LABEL = "label"
@@ -32,7 +30,8 @@ dn_LABEL = "label"
 dn_OUT = "out"
 # >> out level
 dn_TOLABEL = "tolabel"
-
+# >>> only train level
+dn_AUGMENTATION = "aug"
 # > src level
 dn_NN = "nn"
 # >> NN level

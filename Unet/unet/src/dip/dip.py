@@ -1,4 +1,3 @@
-from nn import nn
 import setting.constant as const
 import dip.image as im
 import importlib
@@ -16,11 +15,5 @@ def preprocessor(image, label=None):
 
 
 def posprocessor(original, image):
-    pp = importlib.import_module("%s.%s.%s" % (const.dn_DIP, const.dn_PROCESSING, const.IMG_PROCESSING))
     image = cv2.resize(image, original.shape[:2][::-1])
-    image = pp.posprocessor(image)
     return im.threshold(image)
-
-
-def overlay(image, layer):
-    return im.overlay(image, layer)

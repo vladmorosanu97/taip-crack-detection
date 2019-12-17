@@ -1,5 +1,4 @@
 import dip.image as im
-import numpy as np
 import cv2
 
 
@@ -18,7 +17,3 @@ def label_preprocessor(label):
     label = cv2.cvtColor(label, cv2.COLOR_BGR2GRAY)
     label = im.threshold(label, min_limit=127)
     return label
-
-
-def posprocessor(image):
-    return im.threshold(image)

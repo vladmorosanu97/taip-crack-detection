@@ -1,12 +1,12 @@
 from keras.callbacks import ModelCheckpoint, EarlyStopping, CSVLogger
-from util import path, data, misc, generator as gen
-from dip import dip
+from util import path, data, misc
+from dip import dip, image as im
 import setting.constant as const
 import importlib
 import sys
 
 
-class NeuralNetwork():
+class NeuralNetwork:
     def __init__(self):
         self.arch = importlib.import_module("%s.%s.%s" % (const.dn_NN, const.dn_ARCH, const.MODEL))
 
@@ -39,7 +39,7 @@ class NeuralNetwork():
                 path_save = path.join(self.dn_test_out, mkdir=True)
 
                 image, _ = dip.preprocessor(image, None)
-                original_name = (const.fn_PREPROCESSING % (number))
+                original_name = (const.fn_PREPROCESSING % number)
                 data.imwrite(path.join(path_save, original_name), image)
 
                 yield self.arch.prepare_input(image)
@@ -66,20 +66,13 @@ class NeuralNetwork():
                 data.imwrite(path.join(path_save, original_name), original[i])
 
                 overlay_name = (const.fn_OVERLAY % name)
-                overlay = dip.overlay(original[i], image)
+                overlay = im.overlay(original[i], image)
                 data.imwrite(path.join(path_save, overlay_name), overlay)
         f.close()
 
 
 def train():
     nn = NeuralNetwork()
-
-    total = data.length_from_path(nn.dn_image, nn.dn_aug_image)
-    q = misc.round_up(total, 100) - total
-
-    if q > 0:
-        print("Dataset augmentation (%s increase) is necessary (only once)\n" % q)
-        gen.augmentation(q)
 
     images, labels = data.fetch_from_paths([nn.dn_image, nn.dn_aug_image], [nn.dn_label, nn.dn_aug_label])
     images, labels, v_images, v_labels = misc.random_split_dataset(images, labels, const.p_VALIDATION)
@@ -148,7 +141,6 @@ def test(nn=None):
             name = name.split(".")[0]
             images_names.append(name)
         results = nn.model.predict_generator(generator, len(images), verbose=1)
-        nn.save_predict(images,images_names, results)
+        nn.save_predict(images, images_names, results)
     else:
         print(">> Model not found (%s)\n" % nn.fn_checkpoint)
-
