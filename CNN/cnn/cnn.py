@@ -10,79 +10,102 @@ from tensorflow.keras.layers import Convolution2D
 from tensorflow.keras.layers import MaxPooling2D
 from tensorflow.keras.layers import Flatten
 from tensorflow.keras.layers import Dense
-
-classifier = Sequential()
-
-classifier.add(Convolution2D(32, 3,3, input_shape = (64, 64, 3), activation = 'relu'))
-
-classifier.add(MaxPooling2D(pool_size = (2,2)))
-
-classifier.add(Flatten())
-
-classifier.add(Dense(128, activation = 'relu'))
-classifier.add(Dense(1, activation = 'sigmoid'))
-
-classifier.compile(optimizer = 'adam', loss = 'binary_crossentropy', metrics = ['accuracy'])
-
-
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
-
-
-train_datagen = ImageDataGenerator(
-        rescale=1./255,
-        shear_range=0.2,
-        zoom_range=0.2,
-        horizontal_flip=True)
-
-test_datagen = ImageDataGenerator(rescale=1./255)
-
-training_set = train_datagen.flow_from_directory(
-        r"C:\Master\TAIP\cnn\training-set\Convolutional_Neural_Networks\dataset\training_set",
-        target_size = (64,64),
-        batch_size = 32,
-        class_mode = 'binary')
-
-test_set = test_datagen.flow_from_directory(
-        r"C:\Master\TAIP\cnn\training-set\Convolutional_Neural_Networks\dataset\test_set",
-        target_size = (64,64),
-        batch_size = 32,
-        class_mode = 'binary')
-
-
+from skimage.color import rgb2grey
 from IPython.display import display
 from PIL import Image
 
-classifier.fit_generator(
-        training_set, 
-        steps_per_epoch = 10,
-        epochs = 1,
-        validation_data = test_set,
-        validation_steps = 10)
-
-
 import numpy as np
 from tensorflow.keras.preprocessing import image
-
-print(result[0][0])
-if result[0][0] >= 0.5:
-    prediction = 'crack'
-else:
-    prediction = 'non crack'
-
-print(prediction)
+from tensorflow.keras.models import load_model
 
 
-#from tensorflow.keras.models import load_model
+class CnnClassifier:
+    def __init__(self):
+        self.classifier = Sequential()
 
-#classifier.save(r"C:\Master\TAIP\cnn\models\my_model-2.h5")
+        self.classifier.add(Convolution2D(32, 3, 3, input_shape=(128, 128, 1), activation='relu'))
 
-#new_model = load_model("C:\Master\TAIP\cnn\models\my_model-2.h5")
+        self.classifier.add(MaxPooling2D(pool_size=(2, 2)))
 
-#result = new_model.predict(test_image)
+        self.classifier.add(Flatten())
 
-#if result[0][0] >= 0.5:
-#    prediction = 'dog'
-#else:
-#    prediction = 'cat'
+        self.classifier.add(Dense(128, activation='relu'))
+        self.classifier.add(Dense(1, activation='sigmoid'))
 
-#print(prediction)
+        self.classifier.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
+        self.TRAINING_PATH = r"C:\Master\TAIP\training-datasets\multiplied-crack-images-for-classification"
+                             
+        self.TEST_PATH = r"C:\Master\TAIP\test-datasets\cracks"
+        self.train_datagen = None
+        self.training_set = None
+
+    def save_model(self, path):
+        self.classifier.save(path)
+
+    def load_training_dataset(self):
+        self.train_datagen = ImageDataGenerator(
+            rescale=1. / 255,
+            shear_range=0.2,
+            zoom_range=0.2,
+            horizontal_flip=True)
+        
+        self.test_datagen = ImageDataGenerator(
+            rescale=1. / 255)
+
+        self.training_set = self.train_datagen.flow_from_directory(self.TRAINING_PATH,
+                                                                   target_size=(128, 128),
+                                                                   batch_size=32,
+                                                                   color_mode='grayscale',
+                                                                   class_mode='binary')
+        
+        self.test_set = self.test_datagen.flow_from_directory(self.TEST_PATH,
+                                                                   target_size=(128, 128),
+                                                                   batch_size=32,
+                                                                   color_mode='grayscale',
+                                                                   class_mode='binary')
+
+    def train(self):
+        self.classifier.fit_generator(
+            self.training_set,
+            steps_per_epoch=100,
+            epochs=2,
+            validation_data=self.test_set,
+            validation_steps=800)
+
+    def predict(self, path):
+        test_image = image.load_img(path, target_size=(128, 128), color_mode = "grayscale")
+        test_image = image.img_to_array(test_image)
+        test_image = np.expand_dims(test_image, axis=0)
+        result = self.classifier.predict(test_image)
+        print(result[0][0])
+        if result[0][0] >= 0.5:
+            prediction = 'crack'
+        else:
+            prediction = 'not crack'
+        print(prediction)
+
+
+model = CnnClassifier()
+model.load_training_dataset()
+model.train()
+
+#
+model.save_model(r"C:\Master\TAIP\models\model2.h5")
+
+
+# training_set.class_indices
+
+
+# test_image = image.load_img(r"C:\Master\TAIP\cracks\random-images\00084.jpg", target_size=(64, 64))
+# test_image = image.img_to_array(test_image)
+# test_image = np.expand_dims(test_image, axis=0)
+
+# result = classifier.predict(test_image)
+# training_set.class_indices
+
+# print(result[0][0])
+# if result[0][0] >= 0.5:
+#     prediction = 'crack'
+# else:
+#     prediction = 'not crack'
