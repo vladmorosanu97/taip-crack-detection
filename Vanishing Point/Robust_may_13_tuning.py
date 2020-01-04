@@ -23,7 +23,7 @@ def HoughDetect_May_13(img, x, P, resolution=1):
     i_w = int(img.shape[1] * resolution)  # image width
     img = imutils.resize(img, width=i_w)  # resizing image for desired resolution
     i_h = int(img.shape[0])  # image height
-    # print("Resize Width = {0}, Image Height  = {0}".format(i_w, i_h))  # Comment if running on a video file
+
 
     img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)  # BGR TO GRAYSCALE
     img_gray = cv2.medianBlur(img_gray, 3)  # Removes salt and pepper noise-convolves the img with a (3,3) square kernel
@@ -103,8 +103,7 @@ def HoughDetect_May_13(img, x, P, resolution=1):
         return img, x, P, x  # Since there were no measurement for this frame, return state info twice
 
     # Computer the homogeneous representation of the lines given the detected end points
-    print("LPR")
-    print(lines_r_l)
+    vp_coord = []
     if len(lines_r_l) != 0:
         lines_all = intersection_library.lines_from_points(lines_r_l)
       
@@ -119,17 +118,17 @@ def HoughDetect_May_13(img, x, P, resolution=1):
     # Draw blue circle around measurement point given by x axis of the intersection point and 1/3rd of the image height.
     # done to highlight changes in the horizontal position of the Vanishing point as that it what we are interested in.
         cv2.circle(img, (i_x, int(i_h/3)), int(i_w/50), (255, 0, 0), 3)
+        vp_coord = [i_x, int(i_h/3)]
+    # # Passing measurement information to the State Estimation Filter (EKF)
+    # lines_new = np.array(lines_EKF)
+    # measurements = Matrix([[i_x], [i_y]])
+    # x, P = EKF(x, P, lines_new, measurements, resolution)
+    # v_1 = int(x.value[0][0])
+    # v_2 = int(x.value[1][0])
+    #
+    # # Draw a green circle around the vanishing point estimated by the EKF
+    # cv2.circle(img, (v_1, int(i_h/3)), int(i_w/48), (0, 255, 0), 3)
 
-    # Passing measurement information to the State Estimation Filter (EKF)
-    lines_new = np.array(lines_EKF)
-    measurements = Matrix([[i_x], [i_y]])
-    x, P = EKF(x, P, lines_new, measurements, resolution)
-    v_1 = int(x.value[0][0])
-    v_2 = int(x.value[1][0])
-
-    # Draw a green circle around the vanishing point estimated by the EKF
-    cv2.circle(img, (v_1, int(i_h/3)), int(i_w/48), (0, 255, 0), 3)
-
-    return img, x, P, measurements, crop_s, crop_f
+    return img, x, vp_coord, crop_s, crop_f
 
 

@@ -22,12 +22,12 @@ class TestMatrix(TestCase):
 
     def test_transpose(self):
         self.transpose = self.matrix.transpose()
-        self.assertIsNot(self.transpose, [10000.0, 0.0])
+        self.assertEquals(self.transpose, [[10000.0, 0.0], [0.0, 10000.0]])
         self.assertIsNot(self.transpose, [0.0, 10000.0])
 
     def test_Cholesky(self):
         self.cholesky = self.matrix.Cholesky()
-        self.assertIsNot(self.cholesky, [[100.0, 0.0], [0, 100.0]])
+        self.assertEquals(self.cholesky, [[100.0, 0.0], [0, 100.0]])
     #
     # def test_CholeskyInverse(self):
     #     self.fail()
