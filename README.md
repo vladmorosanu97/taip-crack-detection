@@ -57,3 +57,13 @@ Libraries:
 * numpy
 * sklearn
 * cvutils
+
+## SVM - Highway Detection
+Python 3.6.5
+
+Libraries:
+* pandas
+* numpy
+* pillow
+* skimage
+* sklearn
