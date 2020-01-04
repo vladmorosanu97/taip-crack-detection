@@ -2,36 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="af438b16-22e9-4e55-a778-127cb601b5df" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../Vanishing Point Detection/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OUT/road2_center.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OUT/road2_cropped.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OUT/road2_triangle.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OUT/road3_center.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OUT/road3_cropped.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OUT/road3_triangle.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OUT/road4_center.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OUT/road4_cropped.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OUT/road4_triangle.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OUT/road5_center.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OUT/road5_cropped.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OUT/road5_triangle.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OUT/road6_center.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OUT/road6_cropped.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OUT/road6_triangle.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OUT/road7_center.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OUT/road7_cropped.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OUT/road7_triangle.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OUT/road8_center.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OUT/road8_cropped.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OUT/road8_triangle.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OUT/road_center.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OUT/road_cropped.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OUT/road_triangle.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Robust_may_13_tuning.py" beforeDir="false" afterPath="$PROJECT_DIR$/Robust_may_13_tuning.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Single_image_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/Single_image_test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/test_matrix.py" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/test_matrix.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -72,14 +43,14 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="4" />
-          <entry key="py" value="2077" />
+          <entry key="py" value="2088" />
           <entry key="yaml" value="10" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="PLAIN_TEXT" value="4" />
-          <entry key="Python" value="2077" />
+          <entry key="Python" value="2088" />
           <entry key="YAML" value="10" />
         </counts>
       </usages-collector>
@@ -90,12 +61,12 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Single_image_test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="143">
-              <caret line="56" column="38" lean-forward="true" selection-start-line="56" selection-start-column="38" selection-end-line="56" selection-end-column="38" />
+            <state relative-caret-position="245">
+              <caret line="64" selection-start-line="64" selection-start-column="2" selection-end-line="65" selection-end-column="28" />
               <folding>
                 <element signature="e#55#68#0" expanded="true" />
-                <marker date="1578161892911" expanded="true" signature="241:870" ph="..." />
-                <marker date="1578161892911" expanded="true" signature="633:870" ph="..." />
+                <marker date="1578162303122" expanded="true" signature="241:871" ph="..." />
+                <marker date="1578162303122" expanded="true" signature="633:871" ph="..." />
               </folding>
             </state>
           </provider>
@@ -357,12 +328,12 @@
     <frame x="-6" y="-6" width="1549" height="837" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15125495" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15125495" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3286119" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3286119" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3286119" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -486,12 +457,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Single_image_test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="143">
-          <caret line="56" column="38" lean-forward="true" selection-start-line="56" selection-start-column="38" selection-end-line="56" selection-end-column="38" />
+        <state relative-caret-position="245">
+          <caret line="64" selection-start-line="64" selection-start-column="2" selection-end-line="65" selection-end-column="28" />
           <folding>
             <element signature="e#55#68#0" expanded="true" />
-            <marker date="1578161892911" expanded="true" signature="241:870" ph="..." />
-            <marker date="1578161892911" expanded="true" signature="633:870" ph="..." />
+            <marker date="1578162303122" expanded="true" signature="241:871" ph="..." />
+            <marker date="1578162303122" expanded="true" signature="633:871" ph="..." />
           </folding>
         </state>
       </provider>
