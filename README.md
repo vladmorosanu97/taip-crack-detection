@@ -67,3 +67,5 @@ Libraries:
 * pillow
 * skimage
 * sklearn
+
+https://docs.google.com/document/d/1qDWY3vOS6VMAL8RgfDkVYJyGEYV4YXI7HEFQWgah6YU/edit?usp=sharing
