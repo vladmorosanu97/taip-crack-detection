@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=11">
+    
+    <link rel="shortcut icon" type="image/ico" href="favicon.ico"/>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    
+    <title>Crack Detection</title>
+
+    <!-- Resources -->
+    <script src="js.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="nav nav-pills nav-justified">
+        <span class="nav-item nav-link active">Upload an image</span>
+        <span class="nav-item nav-link">Highway detection</span>
+        <span class="nav-item nav-link">Crack detection</span>
+        <span class="nav-item nav-link">Final result</span>
+    </nav>
+    <article>
+
+        <div id="image-div">
+            <div id="overlay-div">
+                <input id="file-input" type='file' accept="image/*" onchange="onSelectFile(event)" value="" title="Upload image" tabindex="1">
+                <div id="upload-text">
+                    <svg class="bi bi-upload" width="10em" height="10em" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M2.5 10a.5.5 0 01.5.5V14a1 1 0 001 1h12a1 1 0 001-1v-3.5a.5.5 0 011 0V14a2 2 0 01-2 2H4a2 2 0 01-2-2v-3.5a.5.5 0 01.5-.5zM7 6.854a.5.5 0 00.707 0L10 4.56l2.293 2.293A.5.5 0 1013 6.146L10.354 3.5a.5.5 0 00-.708 0L7 6.146a.5.5 0 000 .708z" clip-rule="evenodd"></path>
+                        <path fill-rule="evenodd" d="M10 4a.5.5 0 01.5.5v8a.5.5 0 01-1 0v-8A.5.5 0 0110 4z" clip-rule="evenodd"></path>
+                    </svg>
+                    <span>Click or drop an image to upload it</span>
+                </div>
+                <img id="img" src="" alt="">
+                <div id="overlay">
+                    <div id="spinner" class="spinner-border m-5 text-light" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                </div>
+                <canvas id="canvas"></canvas>
+            </div>
+        </div>
+        <div id="selections">
+            <div id="toast-info" role="alert" aria-live="assertive" aria-atomic="true" class="toast" data-autohide="true" data-delay="3000">
+                <div class="toast-body">
+                    Click on the cells to correct the detection
+                </div>
+            </div>
+            <div class="card" id="results">
+                <button type="button" class="btn btn-secondary" onclick="showCNN()">CNN</button>
+                <button type="button" class="btn btn-secondary" onclick="showUNET()">UNET</button>
+                <h5 class="card-title">LBP results:</h5>
+            </div>
+            <div id="actions">
+                <button type="button" class="btn btn-secondary" onclick="uploadClicked()">Upload new image</button>
+                <button type="button" class="btn btn-primary" onclick="nextStepClicked()" tabindex="1">
+                    <span>Next Step</span>
+                    <svg class="bi bi-arrow-right-short" width="25px" height="25px" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M10.146 6.646a.5.5 0 01.708 0l3 3a.5.5 0 010 .708l-3 3a.5.5 0 01-.708-.708L12.793 10l-2.647-2.646a.5.5 0 010-.708z" clip-rule="evenodd"></path>
+                        <path fill-rule="evenodd" d="M6 10a.5.5 0 01.5-.5H13a.5.5 0 010 1H6.5A.5.5 0 016 10z" clip-rule="evenodd"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </article>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+</html>
