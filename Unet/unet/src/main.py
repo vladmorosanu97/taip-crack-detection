@@ -5,8 +5,8 @@ from nn import nn
 
 def main():
     dataset = "crackconcrete"
-    train = False
-    test = True
+    train = True
+    test =False
     environment.setup()
     exist = lambda x: len(x) > 0 and path.exist(path.data(x, mkdir=False))
 
