@@ -7,8 +7,8 @@ from LBP.lbp_test import testing, display, record_results
 NEGATIVE_IMG_PATH = "/home/teodora/.facultate/taip/Concrete Crack Images for Classification/Negative"
 POSITIVE_IMG_PATH = "/home/teodora/.facultate/taip/Concrete Crack Images for Classification/Positive"
 
-NEGATIVE_IMG_TEST_PATH = "/home/teodora/.facultate/taip/test-dataset/Negative"
-POSITIVE_IMG_TEST_PATH = "/home/teodora/.facultate/taip/test-dataset/Positive"
+NEGATIVE_IMG_TEST_PATH = os.path.abspath("test-dataset/Negative")
+POSITIVE_IMG_TEST_PATH = os.path.abspath("test-dataset/Positive")
 
 
 def do_training(path_to_img_dir, path_to_serialized_data):
