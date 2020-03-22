@@ -1,5 +1,5 @@
 from unittest import TestCase
-from LBP.lbp_training_oop import TrainingModel
+from LBP.training_model import TrainingModel
 import os
 from coverage import coverage, Coverage
 

@@ -9,20 +9,13 @@ import csv
 import matplotlib.pyplot as plt
 import numpy as np
 from sklearn.externals import joblib
-import argparse as ap
 import cvutils
 
 
-def testing(testing_set_path, testing_set_labels):
+def testing(testing_set_path, serialized_data):
 
-    X_name, X_test, y_test = joblib.load("lbp_dataset.pkl")
+    X_name, X_test, y_test = joblib.load(serialized_data)
     test_images = cvutils.imlist(testing_set_path)
-
-    test_dic = {}
-    with open(testing_set_labels, 'rt') as csvfile:
-        reader = csv.reader(csvfile, delimiter=' ')
-        for row in reader:
-            test_dic[row[0]] = int(row[1])
 
     results_all = {}
 
@@ -42,7 +35,7 @@ def testing(testing_set_path, testing_set_labels):
             1: chi-square
             2: intersection
             3/4: computes Bhattacharyya distance, which is related to Bhattacharyya coefficient
-        Calculate the chi-squared distance and the sort the values(the lower the distance -> better result)
+        Calculate the chi-squared distance and then sort the values(the lower the distance -> better result)
         """
         for index, x in enumerate(X_test):
             score = cv2.compareHist(np.array(x, dtype=np.float32), np.array(hist, dtype=np.float32), method=1)
@@ -51,7 +44,7 @@ def testing(testing_set_path, testing_set_labels):
         results_all[test_image] = results
         print("Displaying scores for {} ** \n".format(test_image))
         for image, score in results:
-            print("{} has score {}".format(image, score))
+            print("[SCORES] [{} has score {}".format(image, score))
 
     return results_all
 
