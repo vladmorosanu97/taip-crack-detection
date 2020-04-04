@@ -1,0 +1,102 @@
+body > * {
+    user-select: none;
+}
+
+.nav {
+    /* visibility: hidden; */
+    padding: 10px;
+    /* user-select: none; */
+}
+
+img {
+    display: none;
+}
+
+article {
+    display: flex;
+}
+
+#image-div {
+    flex: 1;
+}
+
+#selections {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+
+    padding: 10px;
+}
+
+#results {
+    visibility: hidden;
+    padding: 10px;
+}
+
+#results button {
+    margin-bottom: 10px;
+}
+
+#overlay-div {
+    min-width: 100%;
+    min-height: 84vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#upload-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#overlay {
+    position: absolute;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#file-input {
+    opacity: 0;
+    position: absolute;
+    cursor: pointer;
+
+    height: 90%;
+    width: 80%;
+    top: 60px;
+}
+
+#canvas {
+    display: none;
+    max-width: 100vw;
+    max-height: 90vh;
+}
+
+#spinner {
+    width: 10rem; 
+    height: 10rem;
+    display: none;
+}
+
+#actions {
+    display: none;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    
+    margin: 10px;
+}
+
+.input-group > * {
+    cursor: pointer;
+}
+
+.form-control {
+    user-select: none;
+}
